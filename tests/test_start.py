@@ -8,3 +8,6 @@ def test_pythagorean():
 def test_triple():
     a = Triple(3, 4, 5)
     assert type(a) == Triple
+
+    a = Triple(1, 1, sqrt(2))
+    assert type(a) == Triple
