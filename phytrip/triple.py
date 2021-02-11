@@ -196,4 +196,3 @@ class Triple:
             raise ValueError(f'{angle} is not a special angle.')
         else:
             return special_triples[angle]
-
