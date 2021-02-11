@@ -1,5 +1,5 @@
 from phytrip import Triple, utils
-from math import sqrt
+from math import sqrt, cos, sin, tan, pi, isclose
 import pytest
 
 def test_pythagorean():
@@ -111,3 +111,31 @@ def test_special_triples():
     b = Triple(12, 5, 13)
 
     assert a.add(b).get() == (7, 17, 13 * sqrt(2))
+
+def test_triple_trigonometry():
+    # Get two special angle triples
+    a = Triple.special_angle(45)
+    b = Triple.special_angle(60)
+
+    # Reduce them to unit triples
+    a = a.unit()
+    b = b.unit()
+
+    # Assert that their sum and difference are unit triples
+    (_, _, r) = a.add(b).get()
+    assert r == 1
+
+    (_, _, r) = a.sub(b).get()
+    assert r == 1
+
+    # Checkout trigonometric functions for 60
+    angle = pi/3
+    a = Triple.special_angle(60)
+
+    assert isclose(cos(angle), a.cos())
+    assert isclose(sin(angle), a.sin())
+    assert isclose(tan(angle), a.tan())
+
+    assert isclose(1 / a.tan(), a.cot())
+    assert isclose(1 / a.cos(), a.sec())
+    assert isclose(1 / a.sin(), a.cosec())

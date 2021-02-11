@@ -73,6 +73,57 @@ class Triple:
         r = sqrt(x * x + y * y)
         return Triple(x, y, r)
 
+    def unit(self):
+        # Triples pp. 26.
+        '''
+        Returns the general triple with unit value of r.
+        '''
+        (x, y, r) = self.get()
+        return Triple(x / r, y / r, 1)
+
+    # The following formulae are from Triples pp. 27
+    def cos(self):
+        '''
+        Returns the cosine of the angle associated with the triple
+        '''
+        (x, _, _) = self.unit().get()
+        return x
+
+    def sin(self):
+        '''
+        Returns the sine of the angle associated with the triple
+        '''
+        (_, y, _) = self.unit().get()
+        return y
+
+    def tan(self):
+        '''
+        Returns the tan of the angle associated with the triple
+        '''
+        (x, y, _) = self.unit().get()
+        return y / x
+
+    def cot(self):
+        '''
+        Returns the cot of the angle associated with the triple
+        '''
+        (x, y, _) = self.unit().get()
+        return x / y
+
+    def sec(self):
+        '''
+        Returns the sec of the angle associated with the triple
+        '''
+        (x, _, _) = self.unit().get()
+        return 1 / x
+
+    def cosec(self):
+        '''
+        Returns the cosec of the angle associated with the triple
+        '''
+        (_, y, _) = self.unit().get()
+        return 1 / y
+
     @staticmethod
     def quadrant_angle(value):
         # Triples pp. 13, 14
