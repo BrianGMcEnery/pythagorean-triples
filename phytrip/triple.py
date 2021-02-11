@@ -1,4 +1,5 @@
 from .utils import is_pythagorean_triple
+from math import sqrt
 
 class Triple:
     '''
@@ -62,6 +63,16 @@ class Triple:
         (x, y, r) = self.get()
         return Triple(x * x - y * y, 2 * x * y, r * r)
 
+    def half(self):
+        # Triples pp. 17
+        '''
+        Returns a new triple corresponding to the half angle.
+        '''
+        (x, y, r) = self.get()
+        (x, y) = (x + r, y)
+        r = sqrt(x * x + y * y)
+        return Triple(x, y, r)
+
     @staticmethod
     def quadrant_angle(value):
         # Triples pp. 13, 14
@@ -80,4 +91,21 @@ class Triple:
             raise ValueError(f'{value} is not a quadrant angle.')
         else:
             return quadrant_triples[value]
+
+    @staticmethod
+    def special_angle(value):
+        # Triples pp. 16
+        '''
+        Returns a new triple corresponding to the special angles,
+        [30, 45, 60].
+        '''
+        special_triples = {
+            30: Triple(sqrt(3), 1, 2),
+            45: Triple(1, 1, sqrt(2)),
+            60: Triple(1, sqrt(3), 2),
+        }
+        if value not in special_triples.keys():
+            raise ValueError(f'{value} is not a special angle.')
+        else:
+            return special_triples[value]
 

@@ -54,6 +54,12 @@ def test_triple_arithmetic():
     b = Triple(3, 4, 5)
 
     assert a.sub(b).get() == (24, -7, 25)
+
+    # Example 20. Triples pp. 17
+    a = Triple(7, 24, 25)
+    
+    assert a.half().get() == (32, 24, 40)
+    
     
 def test_quadrant_triples():
     assert Triple.quadrant_angle(0).get() == (1, 0, 1)
@@ -85,5 +91,23 @@ def test_quadrant_triples():
     assert a.sub(b).get() == (-2, 3, sqrt(13))
 
 
+def test_special_triples():
+    assert Triple.special_angle(30).get() == (sqrt(3), 1, 2)
+    assert Triple.special_angle(45).get() == (1, 1, sqrt(2))
+    assert Triple.special_angle(60).get() == (1, sqrt(3), 2)
     
-    
+    # Test to ensure that incorrect quadrant angle raises ValueError
+    with pytest.raises(ValueError):
+        Triple.special_angle(35)
+
+    # Example 17. Triples pp. 16
+    a = Triple.special_angle(30)
+    b = Triple.special_angle(45)
+
+    assert a.add(b).get() == (sqrt(3) - 1, 1 + sqrt(3), 2 * sqrt(2))
+
+    # Example 19. Triples pp. 17
+    a = Triple.special_angle(45)
+    b = Triple(12, 5, 13)
+
+    assert a.add(b).get() == (7, 17, 13 * sqrt(2))
