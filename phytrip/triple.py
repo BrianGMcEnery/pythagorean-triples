@@ -1,5 +1,5 @@
 from .utils import is_pythagorean_triple
-from math import sqrt
+from math import sqrt, gcd
 
 class Triple:
     '''
@@ -80,6 +80,43 @@ class Triple:
         '''
         (x, y, r) = self.get()
         return Triple(x / r, y / r, 1)
+
+    def scale_mult(self, s):
+        '''
+        Returns a new triple with the elements multiplied by s.
+        '''
+        (x, y, r) = self.get()
+        return Triple(x * s, y * s, r * s)
+
+    def scale_div(self, s):
+        '''
+        Returns a new triple with the elements divided by s.
+        '''
+        (x, y, r) = self.get()
+        return Triple(x / s, y / s, r / s)
+
+    def scale_common(self):
+        '''
+        Returns a new triple with the elements divided by their common factor.
+        Only applies to perfect, integer, triples.
+        '''
+        
+        if not self._is_perfect():
+            (x, y, r) = self.get()
+            return Triple(x, y, r)
+        else:
+            (x, y, r) = self._make_perfect().get()
+            cd = gcd(gcd(x, y), r)
+            return Triple(x / cd, y / cd, r / cd)._make_perfect()
+    
+    def _is_perfect(self):
+        (x, y, r) = self.get()
+        return (x, y, r) == tuple ([int(e) for e in (x, y, r)])
+
+    def _make_perfect(self):
+        (x, y, r) = self.get()
+        (x, y, r) = tuple ([int(e) for e in (x, y, r)])
+        return Triple(x, y, r)
 
     # The following formulae are from Triples pp. 27
     def cos(self):

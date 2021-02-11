@@ -20,6 +20,17 @@ def test_triple_creation():
     a = Triple(4, 3, 5)
     assert a.get() == (4, 3, 5)
 
+    a = Triple(20, 15, 25)
+    assert a.scale_common().get() == (4, 3, 5)
+
+    a = Triple(20.0, 15.0, 25.0)
+    assert a.scale_common().get() == (4, 3, 5)
+
+    a = Triple(1.0, 1.0, sqrt(2))
+    assert a.scale_common().get() == (1.0, 1.0, sqrt(2))
+
+
+
 def test_triple_arithmetic():
     # Example 1. Triples pp. 7
     a = Triple(4, 3, 5)
@@ -140,4 +151,3 @@ def test_triple_trigonometry():
     assert isclose(1 / a.cos(), a.sec())
     assert isclose(1 / a.sin(), a.cosec())
 
-    
