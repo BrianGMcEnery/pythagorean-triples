@@ -139,3 +139,5 @@ def test_triple_trigonometry():
     assert isclose(1 / a.tan(), a.cot())
     assert isclose(1 / a.cos(), a.sec())
     assert isclose(1 / a.sin(), a.cosec())
+
+    
