@@ -162,7 +162,7 @@ class Triple:
         return 1 / y
 
     @staticmethod
-    def quadrant_angle(value):
+    def quadrant_angle(angle):
         # Triples pp. 13, 14
         '''
         Returns a new triple corresponding to the quadrant angles,
@@ -175,13 +175,13 @@ class Triple:
             270: Triple(0, -1, 1),
             360: Triple(1, 0, 1),
         }
-        if value not in quadrant_triples.keys():
-            raise ValueError(f'{value} is not a quadrant angle.')
+        if angle not in quadrant_triples.keys():
+            raise ValueError(f'{angle} is not a quadrant angle.')
         else:
-            return quadrant_triples[value]
+            return quadrant_triples[angle]
 
     @staticmethod
-    def special_angle(value):
+    def special_angle(angle):
         # Triples pp. 16
         '''
         Returns a new triple corresponding to the special angles,
@@ -192,8 +192,8 @@ class Triple:
             45: Triple(1, 1, sqrt(2)),
             60: Triple(1, sqrt(3), 2),
         }
-        if value not in special_triples.keys():
-            raise ValueError(f'{value} is not a special angle.')
+        if angle not in special_triples.keys():
+            raise ValueError(f'{angle} is not a special angle.')
         else:
-            return special_triples[value]
+            return special_triples[angle]
 
