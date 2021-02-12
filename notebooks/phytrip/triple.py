@@ -1,5 +1,4 @@
 from .utils import is_pythagorean_triple
-from .codenumber import CodeNumber
 from math import sqrt, gcd
 
 class Triple:
@@ -131,15 +130,6 @@ class Triple:
         (x, y, r) = self.get()
         (x, y, r) = tuple ([int(e) for e in (x, y, r)])
         return Triple(x, y, r)
-
-    def codenumber(self):
-        # Triples pp. 68
-        '''
-        Return a codenumber corresponding to the triple
-        '''
-        (x, y, r) = self.get()
-        (c, d) = x + r, y
-        return CodeNumber(c, d)
 
 
     # The following formulae are from Triples pp. 27
