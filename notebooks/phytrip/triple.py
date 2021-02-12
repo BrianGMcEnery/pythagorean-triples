@@ -113,7 +113,6 @@ class Triple:
         Returns a new triple with the elements divided by their common factor.
         Only applies to perfect, integer, triples.
         '''
-        
         if not self._is_perfect():
             (x, y, r) = self.get()
             return Triple(x, y, r)

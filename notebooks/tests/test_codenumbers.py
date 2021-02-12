@@ -22,8 +22,9 @@ class TestCodeNumbers:
         assert common.triple(cn).scale_common().get() == Triple(5, 12, 13).get()
         
         # Triples Example 8, 9. pp. 68
+        # Again we need to use scale_common
         a = Triple(21, 20, 29)
-        assert common.codenumber(a).get() == CodeNumber(5, 2).get()
+        assert common.codenumber(a).scale_common().get() == CodeNumber(5, 2).get()
 
 
 
