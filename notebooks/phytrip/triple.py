@@ -15,6 +15,19 @@ class Triple:
             self.x, self.y, self.r = x, y, r
         else:
             raise ValueError(f'{x, y, r} is not a valid triple.')
+            
+    def __str__(self):
+        '''
+        Return a string representation of a triple.
+        '''
+        return f'Triple{self.get()}'
+
+    def __repr__(self):
+        '''
+        Return a representation of a triple.
+        '''
+        return f'Triple{self.get()}'
+
 
     def get(self):
         '''
@@ -196,3 +209,4 @@ class Triple:
             raise ValueError(f'{angle} is not a special angle.')
         else:
             return special_triples[angle]
+            

@@ -11,9 +11,11 @@ class TestTriples:
     def test_triple_creation(self):
         a = Triple(3, 4, 5)
         assert type(a) == Triple
+        assert str(a) == 'Triple(3, 4, 5)'
 
         a = Triple(1, 1, sqrt(2))
         assert type(a) == Triple
+        assert str(a) == f'Triple(1, 1, {sqrt(2)})'
 
         # Test to ensure that incorrect triple raises ValueError
         with pytest.raises(ValueError):
