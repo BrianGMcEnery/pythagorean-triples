@@ -1,4 +1,4 @@
-from math import gcd
+from math import gcd, sqrt
 
 class CodeNumber:
     '''
@@ -100,6 +100,19 @@ class CodeNumber:
         (c, d) = self.get()
         return CodeNumber(d, c)
 
+    def radius(self):
+        '''
+        Return the radius of the code number
+        '''
+        (c, d) = self.get()
+        return sqrt(c * c + d * d)
+
+    def scale_unit_radius(self):
+        '''
+        Return a codenumber scaled to have a unit radius
+        '''
+        return self.scale_div(self.radius())
+
     @staticmethod
     def quadrant_angle(angle):
         # Triples pp. 72
@@ -119,5 +132,20 @@ class CodeNumber:
         else:
             return quadrant_codenumbers[angle]
 
+    @staticmethod
+    def special_angle(angle):
+        '''
+        Returns a new codenumber corresponding to the special angles,
+        [30, 45, 60].
+        '''
+        special_codenumbers = {
+            30: CodeNumber(sqrt(3) + 2, 1),
+            45: CodeNumber(1 + sqrt(2), 1),
+            60: CodeNumber(sqrt(3), 1),
+        }
+        if angle not in special_codenumbers.keys():
+            raise ValueError(f'{angle} is not a special angle.')
+        else:
+            return special_codenumbers[angle]
 
     

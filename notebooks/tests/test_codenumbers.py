@@ -1,5 +1,6 @@
-from phytrip import Triple, CodeNumber
-from phytrip import common
+from phytrip import Triple, CodeNumber, common
+import pytest
+from math import sqrt
 
 class TestCodeNumbers:
 
@@ -49,6 +50,27 @@ class TestCodeNumbers:
         a = CodeNumber(20, 9)
 
         assert a.supplement().get() == CodeNumber(9, 20).get()
+
+    def test_quadrant_codenumbers(self):
+        assert CodeNumber.quadrant_angle(0).get() == (1, 0)
+        assert CodeNumber.quadrant_angle(90).get() == (1, 1)
+        assert CodeNumber.quadrant_angle(180).get() == (0, 1)
+        assert CodeNumber.quadrant_angle(270).get() == (1, -1)
+        assert CodeNumber.quadrant_angle(360).get() == (1, 0)
+
+        # Test to ensure that incorrect quadrant angle raises ValueError
+        with pytest.raises(ValueError):
+            CodeNumber.quadrant_angle(67)
+
+    def test_special_codenumbers(self):
+        assert CodeNumber.special_angle(30).get() == (sqrt(3) + 2, 1)
+        assert CodeNumber.special_angle(45).get() == (1 + sqrt(2), 1)
+        assert CodeNumber.special_angle(60).get() == (sqrt(3), 1)
+    
+        # Test to ensure that incorrect quadrant angle raises ValueError
+        with pytest.raises(ValueError):
+            CodeNumber.special_angle(35)
+
 
 
 
