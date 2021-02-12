@@ -26,5 +26,30 @@ class TestCodeNumbers:
         a = Triple(21, 20, 29)
         assert common.codenumber(a).scale_common().get() == CodeNumber(5, 2).get()
 
+    def test_codenumber_arithmetic(self):
+        # Triples Example 10. pp. 69
+        a = CodeNumber(5, 2)
+        b = CodeNumber(3, 1)
+
+        assert a.add(b).get() == CodeNumber(13, 11).get()
+
+        # Triples Example 11. pp. 70
+        # Note the use of scale_common below
+        a = CodeNumber(5, 3)
+        b = CodeNumber(9, 2)
+
+        assert a.sub(b).scale_common().get() == CodeNumber(3, 1).get()
+
+        # Triples Example 14. pp. 71
+        a = CodeNumber(20, 9)
+
+        assert a.complement().get() == CodeNumber(29, 11).get()
+
+        # Triples Example 17. pp. 72
+        a = CodeNumber(20, 9)
+
+        assert a.supplement().get() == CodeNumber(9, 20).get()
+
+
 
 
