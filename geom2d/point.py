@@ -14,4 +14,8 @@ class Point(Agc):
 
     def __repr__(self):
         '''A representation of a Point object'''
-        return f'Point({self.x}, {self.y})' 
+        return f'Point({self.x}, {self.y})'
+
+    def get(self):
+        '''Return (x, y) as a tuple'''
+        return (self.x, self.y)
