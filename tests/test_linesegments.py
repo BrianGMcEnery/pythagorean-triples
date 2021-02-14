@@ -15,6 +15,9 @@ class TestLineSegment:
         p = Point(3, 4)
         assert l.contains_point(p) == True
 
+        p = Point(4, 4)
+        assert l.contains_point(p) == False
+
         # Try now for the reverse order of points
         p1 = Point(2, 3)
         p2 = Point(4, 5)
