@@ -1,6 +1,6 @@
 # pythagorean-triples
  Pythagorean Triples in Python
  
- Open the Pythagorean Triples notebook.
+ Open the [PythagoreanTriples](PythagoreanTriples.ipynb) notebook.
 
  Much more detailed instructions to follow.
