@@ -123,3 +123,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Apple files
+*.DS_Store
+*.pages
+*.sketch
