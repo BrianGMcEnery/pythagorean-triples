@@ -17,6 +17,15 @@ class LineSegment(Agc):
         '''A representation of a LineSegment object.'''
         return f'LineSegment({repr(self.p1)}, {repr(self.p2)})'
 
+    def get(self):
+        '''Return a tuple consisting of the end points.'''
+        return (self.p1, self.p2)
+
+    def length(self):
+        '''Return the length of the line segment.'''
+        (p1, p2) = self.get()
+        return p1.dist(p2)
+
     def contains_point(self, p):
         '''Returns a boolean value of whether a LineSegment contains a Point.'''
         (x, y) = p.get()
