@@ -26,14 +26,23 @@ class LineSegment(Agc):
         (p1, p2) = self.get()
         return p1.dist(p2)
 
+    def slope(self):
+        ''' Return the slope of the line segment.'''
+        (x1, y1) = self.p1.get()
+        (x2, y2) = self.p2.get()
+        return (y2 - y1)/(x2 - x1)
+
+    def y_intercept(self):
+        ''' Return the y intercept of the line segment'''
+        (x1, y1) = self.p1.get()
+        return Point(0, y1 - self.slope() * x1)
+
     def contains_point(self, p):
         '''Returns a boolean value of whether a LineSegment contains a Point.'''
         (x, y) = p.get()
-        (x1, y1) = self.p1.get()
-        (x2, y2) = self.p2.get()
-        xcon = ((x1 <= x <= x2) or (x2 <= x <= x1))
-        ycon = ((y1 <= y <= y2) or (y2 <= y <= y1))
-        return  xcon and ycon
+        m = self.slope()
+        (_, c) = self.y_intercept().get()
+        return  y == m * x + c
 
     def orientation(self):
         '''Returns a dictionary indicating the orientation of the LineSegment'''

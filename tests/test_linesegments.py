@@ -12,6 +12,8 @@ class TestLineSegment:
         p1 = Point(2, 3)
         p2 = Point(4, 5)
         l = LineSegment(p1, p2)
+        assert l.slope() == 1
+        assert l.y_intercept().get() == Point(0, 1).get()
         p = Point(3, 4)
         assert l.contains_point(p) == True
 
@@ -22,6 +24,8 @@ class TestLineSegment:
         p1 = Point(2, 3)
         p2 = Point(4, 5)
         l = LineSegment(p2, p1)
+        assert l.slope() == 1
+        assert l.y_intercept().get() == Point(0, 1).get()
         p = Point(3, 4)
         assert l.contains_point(p) == True
 
@@ -29,6 +33,8 @@ class TestLineSegment:
         p1 = Point(-2, 3)
         p2 = Point(-4, 5)
         l = LineSegment(p1, p2)
+        assert l.slope() == -1
+        assert l.y_intercept().get() == Point(0, 1).get()
         p = Point(-3, 4)
         assert l.contains_point(p) == True
 
