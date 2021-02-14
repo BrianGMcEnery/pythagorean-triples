@@ -16,11 +16,17 @@ class TestLineSegment:
         assert l.contains_point(p) == True
 
         # Try now for the reverse order of points
-
         p1 = Point(2, 3)
         p2 = Point(4, 5)
         l = LineSegment(p2, p1)
         p = Point(3, 4)
+        assert l.contains_point(p) == True
+
+        # Try now for different sectors
+        p1 = Point(-2, 3)
+        p2 = Point(-4, 5)
+        l = LineSegment(p1, p2)
+        p = Point(-3, 4)
         assert l.contains_point(p) == True
 
 

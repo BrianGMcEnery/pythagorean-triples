@@ -22,4 +22,6 @@ class LineSegment(Agc):
         (x, y) = p.get()
         (x1, y1) = self.p1.get()
         (x2, y2) = self.p2.get()
-        return (x1 <= x <= x2) and (y1 <= y <= y2)
+        xcon = ((x1 <= x <= x2) or (x2 <= x <= x1))
+        ycon = ((y1 <= y <= y2) or (y2 <= y <= y1))
+        return  xcon and ycon
