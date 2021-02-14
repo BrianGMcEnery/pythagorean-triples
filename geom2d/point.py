@@ -1,4 +1,5 @@
 from .agc import Agc
+from math import sqrt
 
 class Point(Agc):
     ''' Class to represent a 2-d point.'''
@@ -19,3 +20,9 @@ class Point(Agc):
     def get(self):
         '''Return (x, y) as a tuple'''
         return (self.x, self.y)
+
+    def dist(self, p):
+        '''Return the distance between two points'''
+        (x, y) = self.get()
+        (xp, yp) = p.get()
+        return sqrt((x - xp) ** 2 + (y - yp) ** 2)

@@ -25,3 +25,9 @@ class LineSegment(Agc):
         xcon = ((x1 <= x <= x2) or (x2 <= x <= x1))
         ycon = ((y1 <= y <= y2) or (y2 <= y <= y1))
         return  xcon and ycon
+
+    def orientation(self):
+        '''Returns a dictionary indicating the orientation of the LineSegment'''
+        (x1, y1) = self.p1.get()
+        (x2, y2) = self.p2.get()
+        return {'x':x1 <= x2, 'y':y1 <= y2}
