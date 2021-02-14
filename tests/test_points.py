@@ -7,6 +7,8 @@ class TestPoint:
         assert type(p) == Point
         assert str(p) == 'Point(2, 3)'
 
+        assert p.get() == (2, 3)
+
     def test_point_geometry(self):
         p1 = Point(1, 1)
         p2 = Point(2, 2)
