@@ -12,10 +12,10 @@ class DrawFactory():
         '''Instantiate objects of factory class'''
         pass
 
-    def make_draw_objects(self, geoms):
+    def make_draw_objects(self, g_objects):
         '''Make a list of draw objects.'''
         draw_objects = []
-        for g_object in geoms:
+        for g_object in g_objects:
             if type(g_object) == Point:
                 draw_objects.append(self.make_pointdraw(g_object))
             elif type(g_object) == LineSegment:
