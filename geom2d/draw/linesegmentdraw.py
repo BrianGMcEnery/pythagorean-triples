@@ -28,6 +28,8 @@ class LineSegmentDraw(Adc):
     def draw(self):
         ''' Draw a linesegment.'''
         (p1, p2) = self.get()
+        p1.draw()
+        p2.draw()
         plt.plot(
             [p1.x, p2.x],
             [p1.y, p2.y],

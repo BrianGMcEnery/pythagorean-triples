@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+import numpy as np
 from .adc import Adc
 
 class TriangleDraw(Adc):
@@ -28,7 +30,26 @@ class TriangleDraw(Adc):
         '''Return a tuple of the points.'''
         return (self.p1, self.p2, self.p3)
 
-    def draw(self):
-        pass
+    def draw(self, ax):
+        '''Draw a triangle.'''
+        (p1, p2, p3) = self.get()
+        p1.draw()
+        p2.draw()
+        p3.draw()
+        array = np.array([
+            [p1.x, p1.y],
+            [p2.x, p2.y],
+            [p3.x, p3.y]
+        ])
+
+        triangle = patches.Polygon(
+            array, 
+            color   = self.color, 
+            fill    = self.fill, 
+            alpha   = self.alpha
+        )
+        return ax.add_patch(triangle)
+
+        
 
 
