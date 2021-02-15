@@ -1,0 +1,4 @@
+name: triples
+dependencies:
+  - numpy
+  - matplotlib
