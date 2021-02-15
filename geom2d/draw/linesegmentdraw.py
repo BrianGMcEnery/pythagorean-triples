@@ -24,3 +24,14 @@ class LineSegmentDraw(Adc):
     def get(self):
         '''Return a tuple consisting of the end points.'''
         return (self.p1, self.p2)
+
+    def draw(self):
+        ''' Draw a linesegment.'''
+        (p1, p2) = self.get()
+        plt.plot(
+            [p1.x, p2.x],
+            [p1.y, p2.y],
+            color=self.color,
+            linewidth=self.linewidth,
+            linestyle=self.linestyle
+        )
