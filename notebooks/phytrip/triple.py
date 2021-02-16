@@ -174,6 +174,10 @@ class Triple:
         (_, y, _) = self.unit().get()
         return 1 / y
 
+    def make_triangle(self, theta=0):
+        '''Returns a Triangle object rotated by theta degrees.'''
+        pass
+
     @staticmethod
     def quadrant_angle(angle):
         # Triples pp. 13, 14
