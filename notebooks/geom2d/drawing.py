@@ -5,7 +5,7 @@ from .drawfactory import DrawFactory
 class Drawing:
     '''Main class to represent a drawing.'''
 
-    def __init__(self, xlim=(-5, 5), ylim=(-5, 5), figsize=(10, 5)):
+    def __init__(self, xlim=(-5, 5), ylim=(-5, 5), figsize=(8, 8)):
         self.xlim = xlim
         self.ylim = ylim
         self.figsize = figsize
@@ -25,6 +25,13 @@ class Drawing:
         self.ax = SubplotZero(self.fig, 1, 1, 1)
         self.fig.add_subplot(self.ax)
 
+        # Plot limits
+        plt.xlim(self.xlim)
+        plt.ylim(self.ylim)
+
+        #for axis in ["xzero", "yzero", "left", "right", "bottom", "top"]:
+        #   self.ax.axis[axis].set_visible(False)
+
         for shape in ["Point", "LineSegment"]:
             drawshapes = self.drawfactory.make_draw_objects(
                 self.shapes[shape]
@@ -41,7 +48,7 @@ class Drawing:
 
         
 
-    def addMany(self, shapes):
+    def add_many(self, shapes):
         for shape in shapes:
             self.add(shape)
 
