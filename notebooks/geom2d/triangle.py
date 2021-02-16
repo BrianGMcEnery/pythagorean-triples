@@ -3,6 +3,7 @@ from .point import Point
 from .linesegment import LineSegment
 from math import cos, sin, radians
 import numpy as np
+from copy import deepcopy
 
 class Triangle(Agc):
     '''Class to represent a 2-d triangle.'''
@@ -33,7 +34,7 @@ class Triangle(Agc):
         return (LineSegment(p1, p2), LineSegment(p2, p3), LineSegment(p3, p1))
 
     def rotate(self, theta):
-        '''Rotate a triangle through the origin by theta degrees'''
+        '''Rotate a triangle around the origin by theta degrees'''
 
         def rotate_origin_only(xy, radians):
             """Only rotate a point around the origin (0, 0)."""
@@ -43,7 +44,7 @@ class Triangle(Agc):
 
             return xx, yy
 
-        (p1, p2, p3) = self.get()
+        (p1, p2, p3) = deepcopy(self.get())
 
         (p1.x, p1.y) = rotate_origin_only((p1.x, p1.y), radians(theta))
         (p2.x, p2.y) = rotate_origin_only((p2.x, p2.y), radians(theta))
