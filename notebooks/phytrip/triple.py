@@ -1,5 +1,6 @@
 from .utils import is_pythagorean_triple
 from math import sqrt, gcd
+from geom2d import Point, Triangle
 
 class Triple:
     '''
@@ -174,9 +175,14 @@ class Triple:
         (_, y, _) = self.unit().get()
         return 1 / y
 
-    def make_triangle(self, theta=0):
-        '''Returns a Triangle object rotated by theta degrees.'''
-        pass
+    def make_triangle(self, theta=0, vec=Point(0,0)):
+        '''Returns a Triangle object rotated by theta degrees and
+        translated by vec.'''
+        x, y, _ = self.get()
+        t = Triangle(Point(0, 0), Point(x, 0), Point(x, y))
+        t = t.rotate(theta)
+        t = t.translate(vec)
+        return t
 
     @staticmethod
     def quadrant_angle(angle):
