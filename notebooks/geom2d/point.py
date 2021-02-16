@@ -1,5 +1,6 @@
 from .agc import Agc
-from math import sqrt
+from math import sqrt, cos, sin, radians
+from copy import deepcopy
 
 class Point(Agc):
     ''' Class to represent a 2-d point.'''
@@ -26,3 +27,29 @@ class Point(Agc):
         (x, y) = self.get()
         (xp, yp) = p.get()
         return sqrt((x - xp) ** 2 + (y - yp) ** 2)
+
+    def rotate(self, theta):
+        '''Rotate a point clockwise around the origin by theta degrees'''
+        def rotate_origin_only(xy, radians):
+            """Only rotate a point around the origin (0, 0)."""
+            x, y = xy
+            xx = x * cos(radians) + y * sin(radians)
+            yy = -x * sin(radians) + y * cos(radians)
+            return xx, yy
+
+        p = deepcopy(self)
+        (p.x, p.y) = rotate_origin_only((p.x, p.y), radians(theta))
+        return p
+
+    def translate(self, vec):
+        """Translate a point by vec."""
+        def translate_by_vec(xy, v_xy):
+            """Translate a point by a vector v"""
+            x, y = xy
+            v_x, v_y = v_xy
+            return x + v_x, y + v_y
+
+        p = deepcopy(self)
+        
+        (p.x, p.y) = translate_by_vec((p.x, p.y), vec.get())
+        return p

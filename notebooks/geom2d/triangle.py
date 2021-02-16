@@ -2,7 +2,6 @@ from .agc import Agc
 from .point import Point
 from .linesegment import LineSegment
 from math import cos, sin, radians
-import numpy as np
 from copy import deepcopy
 
 class Triangle(Agc):
@@ -33,38 +32,19 @@ class Triangle(Agc):
         (p1, p2, p3) = self.get()
         return (LineSegment(p1, p2), LineSegment(p2, p3), LineSegment(p3, p1))
 
+
     def rotate(self, theta):
-        '''Rotate a triangle around the origin by theta degrees'''
-
-        def rotate_origin_only(xy, radians):
-            """Only rotate a point around the origin (0, 0)."""
-            x, y = xy
-            xx = x * cos(radians) + y * sin(radians)
-            yy = -x * sin(radians) + y * cos(radians)
-
-            return xx, yy
-
-        (p1, p2, p3) = deepcopy(self.get())
-
-        (p1.x, p1.y) = rotate_origin_only((p1.x, p1.y), radians(theta))
-        (p2.x, p2.y) = rotate_origin_only((p2.x, p2.y), radians(theta))
-        (p3.x, p3.y) = rotate_origin_only((p3.x, p3.y), radians(theta))
-
-        return Triangle(p1, p2, p3)
+        '''Rotate a triangle clockwise around the origin by theta degrees'''
+        t = deepcopy(self)
+        t.p1 = t.p1.rotate(theta)
+        t.p2 = t.p2.rotate(theta)
+        t.p3 = t.p3.rotate(theta)
+        return t
 
     def translate(self, vec):
         """Translate a triangle by vec."""
-        def translate_by_vec(xy, v_xy):
-            """Translate a point by a vector v"""
-            x, y = xy
-            v_x, v_y = v_xy
-            return x + v_x, y + v_y
-
-        (p1, p2, p3) = deepcopy(self.get())
-        v_xy = vec.get()
-
-        (p1.x, p1.y) = translate_by_vec((p1.x, p1.y), v_xy)
-        (p2.x, p2.y) = translate_by_vec((p2.x, p2.y), v_xy)
-        (p3.x, p3.y) = translate_by_vec((p3.x, p3.y), v_xy)
-
-        return Triangle(p1, p2, p3)
+        t = deepcopy(self)
+        t.p1 = t.p1.translate(vec)
+        t.p2 = t.p2.translate(vec)
+        t.p3 = t.p3.translate(vec)
+        return t

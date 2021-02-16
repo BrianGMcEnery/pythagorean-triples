@@ -1,5 +1,6 @@
 from .agc import Agc
 from .point import Point
+from copy import deepcopy
 
 class LineSegment(Agc):
     ''' Class to represent a 2-d linesegment.'''
@@ -49,3 +50,17 @@ class LineSegment(Agc):
         (x1, y1) = self.p1.get()
         (x2, y2) = self.p2.get()
         return {'x':x1 <= x2, 'y':y1 <= y2}
+
+    def rotate(self, theta):
+        '''Rotate a linesegment clockwise around the origin by theta degrees'''
+        l = deepcopy(self)
+        l.p1 = l.p1.rotate(theta)
+        l.p2 = l.p2.rotate(theta)
+        return l
+
+    def translate(self, vec):
+        """Translate a linesegment by vec."""
+        l = deepcopy(self)
+        l.p1 = l.p1.translate(vec)
+        l.p2 = l.p2.translate(vec)
+        return l
