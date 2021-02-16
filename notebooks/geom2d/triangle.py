@@ -51,3 +51,19 @@ class Triangle(Agc):
         (p3.x, p3.y) = rotate_origin_only((p3.x, p3.y), radians(theta))
 
         return Triangle(p1, p2, p3)
+
+    def translate(self, vec):
+        """Translate a triangle by vec."""
+        def translate_by_vec(xy, v_xy):
+            """Translate a point by a vector v"""
+            x, y = xy
+            v_x, v_y = v_xy
+            return x + v_x, y + v_y
+
+        (p1, p2, p3) = deepcopy(self.get())
+
+        (p1.x, p1.y) = translate_by_vec((p1.x, p1.y), vec)
+        (p2.x, p2.y) = translate_by_vec((p2.x, p2.y), vec)
+        (p3.x, p3.y) = translate_by_vec((p3.x, p3.y), vec)
+
+        return Triangle(p1, p2, p3)
