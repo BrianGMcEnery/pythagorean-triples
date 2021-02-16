@@ -61,9 +61,10 @@ class Triangle(Agc):
             return x + v_x, y + v_y
 
         (p1, p2, p3) = deepcopy(self.get())
+        v_xy = vec.get()
 
-        (p1.x, p1.y) = translate_by_vec((p1.x, p1.y), vec)
-        (p2.x, p2.y) = translate_by_vec((p2.x, p2.y), vec)
-        (p3.x, p3.y) = translate_by_vec((p3.x, p3.y), vec)
+        (p1.x, p1.y) = translate_by_vec((p1.x, p1.y), v_xy)
+        (p2.x, p2.y) = translate_by_vec((p2.x, p2.y), v_xy)
+        (p3.x, p3.y) = translate_by_vec((p3.x, p3.y), v_xy)
 
         return Triangle(p1, p2, p3)
