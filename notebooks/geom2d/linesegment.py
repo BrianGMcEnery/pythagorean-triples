@@ -52,7 +52,7 @@ class LineSegment(Agc):
         return {'x':x1 <= x2, 'y':y1 <= y2}
 
     def rotate(self, theta):
-        '''Rotate a linesegment clockwise around the origin by theta degrees'''
+        '''Rotate a linesegment anti-clockwise around the origin by theta degrees'''
         l = deepcopy(self)
         l.p1 = l.p1.rotate(theta)
         l.p2 = l.p2.rotate(theta)

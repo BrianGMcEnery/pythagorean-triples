@@ -34,7 +34,7 @@ class Triangle(Agc):
 
 
     def rotate(self, theta):
-        '''Rotate a triangle clockwise around the origin by theta degrees'''
+        '''Rotate a triangle anti-clockwise around the origin by theta degrees'''
         t = deepcopy(self)
         t.p1 = t.p1.rotate(theta)
         t.p2 = t.p2.rotate(theta)

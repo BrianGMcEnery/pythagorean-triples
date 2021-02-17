@@ -29,12 +29,12 @@ class Point(Agc):
         return sqrt((x - xp) ** 2 + (y - yp) ** 2)
 
     def rotate(self, theta):
-        '''Rotate a point clockwise around the origin by theta degrees'''
+        '''Rotate a point anti-clockwise around the origin by theta degrees'''
         def rotate_origin_only(xy, radians):
             """Only rotate a point around the origin (0, 0)."""
             x, y = xy
-            xx = x * cos(radians) + y * sin(radians)
-            yy = -x * sin(radians) + y * cos(radians)
+            xx = x * cos(-radians) + y * sin(-radians)
+            yy = -x * sin(-radians) + y * cos(-radians)
             return xx, yy
 
         p = deepcopy(self)
