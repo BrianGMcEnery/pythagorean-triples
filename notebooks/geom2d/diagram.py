@@ -2,8 +2,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axisartist import SubplotZero
 from .drawfactory import DrawFactory
 
-class Drawing:
-    '''Main class to represent a drawing.'''
+class Diagram:
+    '''Main class to represent a diagram.'''
 
     def __init__(self, xlim=(-5, 5), ylim=(-5, 5), figsize=(8, 8)):
         self.xlim = xlim
