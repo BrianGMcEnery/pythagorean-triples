@@ -175,11 +175,11 @@ class Triple:
         (_, y, _) = self.unit().get()
         return 1 / y
 
-    def make_triangle(self, theta=0, vec=Point(0,0)):
+    def make_triangle(self, theta=0, vec=Point(0,0), color='blue'):
         '''Returns a Triangle object rotated by theta degrees and
         translated by vec.'''
         x, y, _ = self.get()
-        t = Triangle(Point(0, 0), Point(x, 0), Point(x, y))
+        t = Triangle(Point(0, 0), Point(x, 0), Point(x, y), color=color)
         t = t.rotate(theta)
         t = t.translate(vec)
         return t
