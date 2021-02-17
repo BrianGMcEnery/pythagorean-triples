@@ -29,7 +29,7 @@ class Drawing:
         plt.xlim(self.xlim)
         plt.ylim(self.ylim)
 
-        plt.grid()
+        plt.grid(True)
 
         #for axis in ["xzero", "yzero", "left", "right", "bottom", "top"]:
         #   self.ax.axis[axis].set_visible(False)
