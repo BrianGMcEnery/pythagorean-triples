@@ -7,11 +7,15 @@ from copy import deepcopy
 class Triangle(Agc):
     '''Class to represent a 2-d triangle.'''
 
-    def __init__(self, p1, p2, p3):
+    def __init__(self, p1, p2, p3, color='blue'):
         '''Initialise a Triangle instance'''
         self.p1 = p1
         self.p2 = p2
         self.p3 = p3
+        self.color = color
+        self.p1.color = color
+        self.p2.color = color
+        self.p3.color = color
 
     def __str__(self):
         '''A string representation of a Triangle.'''

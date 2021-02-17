@@ -5,10 +5,13 @@ from copy import deepcopy
 class LineSegment(Agc):
     ''' Class to represent a 2-d linesegment.'''
 
-    def __init__(self, p1, p2):
+    def __init__(self, p1, p2, color='blue'):
         '''Initialise a LineSegment object.'''
         self.p1 = p1
         self.p2 = p2
+        self.color = color
+        self.p1.color = color
+        self.p2.color = color
 
     def __str__(self):
         '''A string representation of a LineSegment object.'''

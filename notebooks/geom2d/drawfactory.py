@@ -31,17 +31,20 @@ class DrawFactory():
     def make_pointdraw(self, p):
         '''Make a PointDraw object.'''
         (x, y) = p.get()
-        return PointDraw(x, y)
+        color = p.color
+        return PointDraw(x, y, color=color)
 
     def make_linesegmentdraw(self, l):
         '''Make a LineSegmentDraw object.'''
         (p1, p2) = l.get()
         (p1, p2) = (self.make_pointdraw(p1), self.make_pointdraw(p2))
-        return LineSegmentDraw(p1, p2)
+        color = l.color
+        return LineSegmentDraw(p1, p2, color = color)
 
     def make_triangledraw(self, t):
         '''Make a TriangleDraw object.'''
         (p1, p2, p3) = t.get()
         (p1, p2, p3) = (self.make_pointdraw(p1), self.make_pointdraw(p2), 
         self.make_pointdraw(p3))
-        return TriangleDraw(p1, p2, p3)
+        color = t.color
+        return TriangleDraw(p1, p2, p3, color=color)

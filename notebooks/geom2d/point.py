@@ -5,10 +5,11 @@ from copy import deepcopy
 class Point(Agc):
     ''' Class to represent a 2-d point.'''
 
-    def __init__(self, x=0, y=0):
+    def __init__(self, x=0, y=0, color='blue'):
         '''Initialise a Point object'''
         self.x = x
         self.y = y
+        self.color = color
 
     def __str__(self):
         '''A string representation of a Point object'''
