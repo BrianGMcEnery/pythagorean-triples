@@ -69,5 +69,5 @@ class LineSegment(Agc):
     def set_color(self, color):
         """Set the linesegment's color."""
         self.color = color
-        for p in [self.p1, self.p2]:
+        for p in self.get():
             p.set_color(color)

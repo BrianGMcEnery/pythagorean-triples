@@ -9,8 +9,7 @@ class Circle(Agc):
         '''Initialise a Circle instance'''
         self.origin = origin
         self.radius = radius
-        self.color = color
-        self.origin.color = color
+        self.set_color(color)
 
     def __str__(self):
         '''A string representation of a Circle.'''
