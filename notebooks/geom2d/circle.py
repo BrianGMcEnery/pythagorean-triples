@@ -37,3 +37,8 @@ class Circle(Agc):
         t = deepcopy(self)
         t.origin = t.origin.translate(vec)
         return t
+
+    def set_color(self, color):
+        """Set the circle's color."""
+        self.color = color
+        self.origin.set_color(color)

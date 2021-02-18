@@ -11,10 +11,7 @@ class Triangle(Agc):
         self.p1 = p1
         self.p2 = p2
         self.p3 = p3
-        self.color = color
-        self.p1.color = color
-        self.p2.color = color
-        self.p3.color = color
+        self.set_color(color)
 
     def __str__(self):
         '''A string representation of a Triangle.'''
@@ -51,3 +48,9 @@ class Triangle(Agc):
         t.p2 = t.p2.translate(vec)
         t.p3 = t.p3.translate(vec)
         return t
+
+    def set_color(self, color):
+        """Set the triangle's color."""
+        self.color = color
+        for p in self.get():
+            p.set_color(color)

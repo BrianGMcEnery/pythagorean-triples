@@ -9,9 +9,7 @@ class LineSegment(Agc):
         '''Initialise a LineSegment object.'''
         self.p1 = p1
         self.p2 = p2
-        self.color = color
-        self.p1.color = color
-        self.p2.color = color
+        self.set_color(color)
 
     def __str__(self):
         '''A string representation of a LineSegment object.'''
@@ -67,3 +65,9 @@ class LineSegment(Agc):
         l.p1 = l.p1.translate(vec)
         l.p2 = l.p2.translate(vec)
         return l
+
+    def set_color(self, color):
+        """Set the linesegment's color."""
+        self.color = color
+        for p in [self.p1, self.p2]:
+            p.set_color(color)

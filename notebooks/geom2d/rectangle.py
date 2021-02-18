@@ -12,10 +12,7 @@ class Rectangle(Agc):
         self.p3 = top_right
         self.p2 = Point(self.p3.x, self.p1.y)
         self.p4 = Point(self.p1.x, self.p3.y)
-        self.color = color
-
-        for p in self.get():
-            p.color = color
+        self.set_color(color)
 
     def __str__(self):
         '''A string representation of a Rectangle.'''
@@ -55,3 +52,9 @@ class Rectangle(Agc):
         t.p3 = t.p3.translate(vec)
         t.p4 = t.p4.translate(vec)
         return t
+
+    def set_color(self, color):
+        """Set the rectangles's color."""
+        self.color = color
+        for p in self.get():
+            p.set_color(color)

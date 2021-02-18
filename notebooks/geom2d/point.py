@@ -54,3 +54,7 @@ class Point(Agc):
         
         (p.x, p.y) = translate_by_vec((p.x, p.y), vec.get())
         return p
+
+    def set_color(self, color):
+        """Set the points's color."""
+        self.color = color
