@@ -1,7 +1,6 @@
 from .agc import Agc
 from .point import Point
 from .linesegment import LineSegment
-from math import cos, sin, radians
 from copy import deepcopy
 
 class Rectangle(Agc):
