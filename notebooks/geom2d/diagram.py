@@ -18,6 +18,7 @@ class Diagram:
             "LineSegment": [],
             "Triangle": [],
             "Rectangle": [],
+            "Circle": []
         }
 
     def draw(self):
@@ -42,7 +43,7 @@ class Diagram:
             for s in drawshapes:
                 s.draw()
 
-        for shape in ["Triangle", "Rectangle"]:
+        for shape in ["Triangle", "Rectangle", "Circle"]:
             drawshapes = self.drawfactory.make_draw_objects(
                 self.shapes[shape]
             )

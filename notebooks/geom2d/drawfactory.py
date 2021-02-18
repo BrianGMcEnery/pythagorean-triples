@@ -1,3 +1,5 @@
+from .circle import Circle
+from .draw import CircleDraw
 from .linesegment import LineSegment
 from .draw import LineSegmentDraw
 from .point import Point
@@ -26,6 +28,9 @@ class DrawFactory():
                 draw_objects.append(self.make_triangledraw(g_object))
             elif type(g_object) == Rectangle:
                 draw_objects.append(self.make_rectangledraw(g_object))
+            elif type(g_object) == Circle:
+                draw_objects.append(self.make_circledraw(g_object))
+            
             else:
                 raise ValueError(str(g_object), " incorrect type. ")
 
@@ -60,3 +65,10 @@ class DrawFactory():
         self.make_pointdraw(p3), self.make_pointdraw(p4))
         color = r.color
         return RectangleDraw(p1, p2, p3, p4, color=color)
+
+    def make_circledraw(self, c):
+        '''Make a CircleDraw object.'''
+        (origin, radius) = c.get()
+        origin = self.make_pointdraw(origin)
+        color = c.color
+        return CircleDraw(origin, radius, color=color)
