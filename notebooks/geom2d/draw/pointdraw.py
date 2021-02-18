@@ -4,7 +4,7 @@ from .adc import Adc
 class PointDraw(Adc):
     ''' Class to draw a point.'''
     
-    def __init__(self, x, y, color = '#4ca3dd', size = 50, zorder=10):
+    def __init__(self, x, y, color = '#4ca3dd', size = 20, zorder=10):
         '''Initialise attributes of this class'''
         self.x = x
         self.y = y

@@ -4,6 +4,8 @@ from .point import Point
 from .draw import PointDraw
 from .triangle import Triangle
 from .draw import TriangleDraw
+from .rectangle import Rectangle
+from .draw import RectangleDraw
 
 class DrawFactory():
     '''A factory class for creating draw objects.'''
@@ -22,6 +24,8 @@ class DrawFactory():
                 draw_objects.append(self.make_linesegmentdraw(g_object))
             elif type(g_object) == Triangle:
                 draw_objects.append(self.make_triangledraw(g_object))
+            elif type(g_object) == Rectangle:
+                draw_objects.append(self.make_rectangledraw(g_object))
             else:
                 raise ValueError(str(g_object), " incorrect type. ")
 
@@ -48,3 +52,11 @@ class DrawFactory():
         self.make_pointdraw(p3))
         color = t.color
         return TriangleDraw(p1, p2, p3, color=color)
+
+    def make_rectangledraw(self, r):
+        '''Make a RectangleDraw object.'''
+        (p1, p2, p3, p4) = r.get()
+        (p1, p2, p3, p4) = (self.make_pointdraw(p1), self.make_pointdraw(p2), 
+        self.make_pointdraw(p3), self.make_pointdraw(p4))
+        color = r.color
+        return RectangleDraw(p1, p2, p3, p4, color=color)
