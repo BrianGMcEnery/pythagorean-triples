@@ -3,6 +3,7 @@ from .circle        import Circle
 from .drawfactory   import DrawFactory
 from .diagram       import Diagram
 from .ellipse       import Ellipse
+from .line          import Line
 from .linesegment   import LineSegment
 from .point         import Point
 from .polygon       import Polygon

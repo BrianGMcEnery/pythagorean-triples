@@ -4,6 +4,8 @@ from .ellipse import Ellipse
 from .draw import EllipseDraw
 from .linesegment import LineSegment
 from .draw import LineSegmentDraw
+from .line import Line
+from .draw import LineDraw
 from .point import Point
 from .draw import PointDraw
 from .polygon import Polygon
@@ -38,6 +40,8 @@ class DrawFactory():
                 draw_objects.append(self.make_polygondraw(g_object))
             elif type(g_object) == Ellipse:
                 draw_objects.append(self.make_ellipsedraw(g_object))
+            elif type(g_object) == Line:
+                draw_objects.append(self.make_linedraw(g_object))
             else:
                 raise ValueError(str(g_object), " incorrect type. ")
         return draw_objects
@@ -55,6 +59,13 @@ class DrawFactory():
         (p1, p2) = (self.make_pointdraw(p1), self.make_pointdraw(p2))
         color = l.color
         return LineSegmentDraw(p1, p2, color = color)
+
+    def make_linedraw(self, l):
+        '''Make a LineDraw object.'''
+        (p1, p2) = l.get()
+        (p1, p2) = (self.make_pointdraw(p1), self.make_pointdraw(p2))
+        color = l.color
+        return LineDraw(p1, p2, color = color)
 
     def make_triangledraw(self, t):
         '''Make a TriangleDraw object.'''

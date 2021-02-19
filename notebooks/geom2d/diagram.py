@@ -20,7 +20,8 @@ class Diagram:
             "Rectangle": [],
             "Circle": [],
             "Polygon": [],
-            "Ellipse": []
+            "Ellipse": [],
+            "Line": [],
         }
 
     def draw(self):
@@ -45,7 +46,7 @@ class Diagram:
             for s in drawshapes:
                 s.draw()
 
-        for shape in ["Triangle", "Rectangle", "Circle", "Polygon", "Ellipse"]:
+        for shape in ["Triangle", "Rectangle", "Circle", "Polygon", "Ellipse", "Line"]:
             drawshapes = self.drawfactory.make_draw_objects(
                 self.shapes[shape]
             )

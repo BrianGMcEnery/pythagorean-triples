@@ -1,6 +1,7 @@
 from .adc               import Adc
 from .circledraw        import CircleDraw
 from .ellipsedraw       import EllipseDraw
+from .linedraw          import LineDraw
 from .linesegmentdraw   import LineSegmentDraw
 from .pointdraw         import PointDraw
 from .polygondraw       import PolygonDraw
