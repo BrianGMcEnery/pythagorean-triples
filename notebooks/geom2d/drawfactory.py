@@ -4,6 +4,8 @@ from .linesegment import LineSegment
 from .draw import LineSegmentDraw
 from .point import Point
 from .draw import PointDraw
+from .polygon import Polygon
+from .draw import PolygonDraw
 from .triangle import Triangle
 from .draw import TriangleDraw
 from .rectangle import Rectangle
@@ -30,6 +32,8 @@ class DrawFactory():
                 draw_objects.append(self.make_rectangledraw(g_object))
             elif type(g_object) == Circle:
                 draw_objects.append(self.make_circledraw(g_object))
+            elif type(g_object) == Polygon:
+                draw_objects.append(self.make_polygondraw(g_object))
             
             else:
                 raise ValueError(str(g_object), " incorrect type. ")
@@ -72,3 +76,10 @@ class DrawFactory():
         origin = self.make_pointdraw(origin)
         color = c.color
         return CircleDraw(origin, radius, color=color)
+
+    def make_polygondraw(self, poly):
+        '''Make a PolygonDraw object.'''
+        vs = poly.get()
+        vs = list(map(lambda p: self.make_pointdraw(p), vs))
+        color = poly.color
+        return PolygonDraw(vs, color=color)

@@ -4,7 +4,7 @@ from .linesegment import LineSegment
 from copy import deepcopy
 
 class Triangle(Agc):
-    '''Class to represent a 2-d triangle.'''
+    '''Class to represent a triangle.'''
 
     def __init__(self, p1, p2, p3, color='blue'):
         '''Initialise a Triangle instance'''

@@ -3,7 +3,7 @@ from .point import Point
 from copy import deepcopy
 
 class Circle(Agc):
-    '''Class to represent a 2-d triangle.'''
+    '''Class to represent a circle.'''
 
     def __init__(self, origin, radius, color='blue'):
         '''Initialise a Circle instance'''

@@ -4,7 +4,7 @@ from .linesegment import LineSegment
 from copy import deepcopy
 
 class Rectangle(Agc):
-    '''Class to represent a 2-d rectangle.'''
+    '''Class to represent a rectangle.'''
 
     def __init__(self, bottom_left, top_right, color='blue'):
         '''Initialise a Rectangle instance'''
