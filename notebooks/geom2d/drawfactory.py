@@ -41,7 +41,7 @@ class DrawFactory():
             elif type(g_object) == Ellipse:
                 draw_objects.append(self.make_ellipsedraw(g_object))
             elif type(g_object) == Line:
-                draw_objects.append(self.make_linedraw(g_object))
+               draw_objects.append(self.make_linedraw(g_object))
             else:
                 raise ValueError(str(g_object), " incorrect type. ")
         return draw_objects
