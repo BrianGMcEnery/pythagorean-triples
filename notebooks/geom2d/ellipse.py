@@ -31,7 +31,6 @@ class Ellipse(Agc):
         '''Rotate an ellipse anti-clockwise around the origin by theta degrees'''
         t = deepcopy(self)
         t.origin = t.origin.rotate(theta)
-        t.angle += theta #This looks right
         return t
 
     def translate(self, vec):
