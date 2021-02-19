@@ -1,5 +1,7 @@
 from .circle import Circle
 from .draw import CircleDraw
+from .ellipse import Ellipse
+from .draw import EllipseDraw
 from .linesegment import LineSegment
 from .draw import LineSegmentDraw
 from .point import Point
@@ -34,10 +36,10 @@ class DrawFactory():
                 draw_objects.append(self.make_circledraw(g_object))
             elif type(g_object) == Polygon:
                 draw_objects.append(self.make_polygondraw(g_object))
-            
+            elif type(g_object) == Ellipse:
+                draw_objects.append(self.make_ellipsedraw(g_object))
             else:
                 raise ValueError(str(g_object), " incorrect type. ")
-
         return draw_objects
 
 
@@ -83,3 +85,10 @@ class DrawFactory():
         vs = list(map(lambda p: self.make_pointdraw(p), vs))
         color = poly.color
         return PolygonDraw(vs, color=color)
+
+    def make_ellipsedraw(self, e):
+        '''Make a EllipseDraw object.'''
+        (o, w, h, a) = e.get()
+        o = self.make_pointdraw(o)
+        color = e.color
+        return EllipseDraw(o, w, h, a, color=color)
